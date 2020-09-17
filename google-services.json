@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "271709208420",
+    "firebase_url": "https://superior-6be2f.firebaseio.com",
+    "project_id": "superior-6be2f",
+    "storage_bucket": "superior-6be2f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271709208420:android:a797f7adfc135df5360471",
+        "android_client_info": {
+          "package_name": "com.superior"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "271709208420-23beu6vh0m4gktdat7p3f67s76tek3mk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAATlTc8DGdAdjdh-twdceVSHEM44zYJZo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "271709208420-23beu6vh0m4gktdat7p3f67s76tek3mk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

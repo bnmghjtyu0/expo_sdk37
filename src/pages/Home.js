@@ -7,6 +7,8 @@ import { ThemeContext } from "../context/ThemeContext";
 function HomeScreen({ navigation }) {
   const switchTheme = React.useContext(ThemeContext);
   const colors = useTheme();
+  const [user, setUser] = React.useState("");
+
   React.useLayoutEffect(() => {
     navigation.setOptions({
       headerStyle: {
@@ -30,10 +32,51 @@ function HomeScreen({ navigation }) {
       ),
     });
   }, [navigation, switchTheme]);
+
+  React.useEffect(() => {
+    initAsync();
+  }, []);
+  initAsync = async () => {
+    await GoogleSignIn.initAsync({
+      // You may ommit the clientId when the firebase `googleServicesFile` is configured
+      clientId: "271709208420-23beu6vh0m4gktdat7p3f67s76tek3mk.apps.googleusercontent.com",
+    });
+    _syncUserWithStateAsync();
+  };
+
+  _syncUserWithStateAsync = async () => {
+    const user = await GoogleSignIn.signInSilentlyAsync();
+    setUser(user);
+  };
+
+  signOutAsync = async () => {
+    await GoogleSignIn.signOutAsync();
+    setUser(null);
+  };
+
+  const signInAsync = async () => {
+    try {
+      await GoogleSignIn.askForPlayServicesAsync();
+      const { type, user } = await GoogleSignIn.signInAsync();
+      if (type === "success") {
+        _syncUserWithStateAsync();
+      }
+    } catch ({ message }) {
+      alert("login: Error:" + message);
+    }
+  };
+
+  const onPress = () => {
+    if (user) {
+      signOutAsync();
+    } else {
+      signInAsync();
+    }
+  };
   return (
     <View style={{ flex: 1 }}>
       <Text>Open up App.js to start working on your app!</Text>
-
+      <Text onPress={onPress}>Toggle Auth</Text>
       <Button
         title="About"
         onPress={() => {
