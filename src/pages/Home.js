@@ -4,6 +4,8 @@ import * as RootNavigation from "../navigation/RootNavigation";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useTheme } from "@react-navigation/native";
 import { ThemeContext } from "../context/ThemeContext";
+import * as GoogleSignIn from 'expo-google-sign-in';
+
 function HomeScreen({ navigation }) {
   const switchTheme = React.useContext(ThemeContext);
   const colors = useTheme();
